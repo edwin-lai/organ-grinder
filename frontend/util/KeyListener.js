@@ -1,5 +1,5 @@
 var Note = require('./note.js');
-//TODO: require key actions
+var KeyActions = require('../actions/KeyActions.js');
 
 var Mapping = {
   81: 'c',
@@ -18,8 +18,18 @@ var Mapping = {
 };
 
 var KeyListener = {
-  on: $(document).on('keydown', function () {debugger; console.log('hello') }/*KeyActions.keyPressed*/),
-  off: $(document).on('keyup', console.log('goodbye') /*KeyActions.keyReleased*/)
+  on: $(document).on('keydown', function (e) {
+    if (Mapping[e.keyCode] !== undefined) {
+      console.log(Mapping[e.keyCode]);
+      KeyActions.keyPressed(Mapping[e.keyCode]);
+    }
+  }),
+  off: $(document).on('keyup', function (e) {
+    if (Mapping[e.keyCode] !== undefined) {
+      console.log(Mapping[e.keyCode]);
+      KeyActions.keyReleased(Mapping[e.keyCode]);
+    }
+  })
 };
 
 module.exports = KeyListener;

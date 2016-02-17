@@ -14,10 +14,16 @@ KeyStore.__onDispatch = function (payload) {
     case 'ADD_NOTE':
       addNote(payload.note);
       KeyStore.__emitChange();
+      console.log(_notes);
       break;
     case 'RECEIVE_SCORE':
       resetNotes(payload.notes);
       KeyStore.__emitChange();
+      break;
+    case 'STOP_NOTE':
+      stopNote(payload.note);
+      KeyStore.__emitChange();
+      console.log(_notes);
       break;
   }
   console.log(payload);
@@ -29,6 +35,12 @@ function addNote(note) {
 
 function resetNotes(notes) {
   _notes = notes;
+}
+
+function stopNote(note) {
+  _notes = _notes.filter( function(element) {
+    return element !== note;
+  });
 }
 
 module.exports = KeyStore;
