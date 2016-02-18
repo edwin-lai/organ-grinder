@@ -14,7 +14,6 @@ KeyStore.__onDispatch = function (payload) {
     case 'ADD_NOTE':
       addNote(payload.note);
       KeyStore.__emitChange();
-      console.log(_notes);
       break;
     case 'RECEIVE_SCORE':
       resetNotes(payload.notes);
@@ -23,10 +22,8 @@ KeyStore.__onDispatch = function (payload) {
     case 'STOP_NOTE':
       stopNote(payload.note);
       KeyStore.__emitChange();
-      console.log(_notes);
       break;
   }
-  console.log(payload);
 };
 
 function addNote(note) {

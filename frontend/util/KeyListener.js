@@ -14,19 +14,24 @@ var Mapping = {
   89: 'a',
   55: 'a#',
   85: 'b',
-  73: 'c5'
+  73: 'c5',
+  57: 'c5#',
+  79: 'd5',
+  48: 'd5#',
+  80: 'e5',
+  219: 'f5',
+  187: 'f5#',
+  221: 'g5'
 };
 
 var KeyListener = {
   on: $(document).on('keydown', function (e) {
     if (Mapping[e.keyCode] !== undefined) {
-      console.log(Mapping[e.keyCode]);
       KeyActions.keyPressed(Mapping[e.keyCode]);
     }
   }),
   off: $(document).on('keyup', function (e) {
     if (Mapping[e.keyCode] !== undefined) {
-      console.log(Mapping[e.keyCode]);
       KeyActions.keyReleased(Mapping[e.keyCode]);
     }
   })
